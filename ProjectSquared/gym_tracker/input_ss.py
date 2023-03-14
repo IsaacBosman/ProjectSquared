@@ -30,9 +30,41 @@ def clean_exercise_rows(dataframe):
     cln_df = dataframe.dropna(subset=['Wt.'])
     return cln_df
 
+#Groups exercises by day performed on
+def group_by_day(dataframe, exercises):
+    dataframe.sort_values(by=['Date'])
+
+    all_ex = set(exercises)
+    enc_ex = set()
+
+    date_dict = {}
+    #stop after all exercises in 'exercises' encountered
+    for i in range(0,len(dataframe.index)):
+        ex = dataframe['Exercise'].values[i:i+1]
+        date = dataframe['Date'].values[i:i+1]
+        if date[0] in date_dict.keys():
+            date_dict[date[0]].append(ex[0])
+        else:
+            date_dict[date[0]] = [ex[0]]
+        
+        if ex[0] in all_ex:
+            enc_ex.add(ex[0])
+        
+        if len(all_ex - enc_ex) == 0:
+            break
+    num_days = len(date_dict.keys())
+
+    day_groups = {}
+    for x, y in enumerate(date_dict.values()):
+        day_groups[x] = y
+    return day_groups
+
 exercises = get_exercises(dataframe1)
 
-
-
 exercise_df = get_exercise_rows(dataframe1, exercises)
-print(clean_exercise_rows(exercise_df))
+
+print(group_by_day(exercise_df, exercises))
+
+exercise_df = clean_exercise_rows(exercise_df)
+
+print(exercise_df)
