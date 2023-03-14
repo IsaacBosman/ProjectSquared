@@ -5,9 +5,9 @@ import numpy as np
 BOILER_PLATE = ["JPG Coaching 10 Week Men's", 'Monday: Upper', 'Tuesday: Lower', 'Thursday: Chest/Back', 'Friday: Arms + Lower B']
 
 # read by default 1st sheet of an excel file
-dataframe1 = pd.read_excel('E:\Project^2\JPG Gym Spreadsheet.xlsx')
+# dataframe1 = pd.read_excel('E:\Project^2\JPG Gym Spreadsheet.xlsx')
  
-print(dataframe1)
+# print(dataframe1)
 
 #Returns a list of exercises
 def get_exercises(dataframe):
@@ -52,19 +52,18 @@ def group_by_day(dataframe, exercises):
         
         if len(all_ex - enc_ex) == 0:
             break
-    num_days = len(date_dict.keys())
 
     day_groups = {}
     for x, y in enumerate(date_dict.values()):
         day_groups[x] = y
     return day_groups
 
-exercises = get_exercises(dataframe1)
+# exercises = get_exercises(dataframe1)
 
-exercise_df = get_exercise_rows(dataframe1, exercises)
+# exercise_df = get_exercise_rows(dataframe1, exercises)
 
-print(group_by_day(exercise_df, exercises))
+# print(group_by_day(exercise_df, exercises))
 
-exercise_df = clean_exercise_rows(exercise_df)
+# exercise_df = clean_exercise_rows(exercise_df)
 
-print(exercise_df)
+# print(exercise_df)
