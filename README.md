@@ -6,3 +6,4 @@ Required Packages:
   Django
   psycopg2
   xlrd
+  pandas
