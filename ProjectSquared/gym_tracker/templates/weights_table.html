@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load crispy_forms_tags %}
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -27,7 +28,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/gym_tracker">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                         <!-- <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li> -->
                     </ul>
@@ -41,7 +42,7 @@
                     <div class="text-center">
                         <h1 class="mx-auto my-0 text-uppercase">Gym Tracker</h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, web app for tracking your gym progress</h2>
-                        <a class="btn btn-primary" href="weights_tracker">Get Started</a>
+                        <a class="btn btn-primary" href="#about">Get Started</a>
                     </div>
                 </div>
             </div>
@@ -70,8 +71,12 @@
                     <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static 'assets/img/bg-masthead.jpg' %}" alt="..." /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
-                            <h4>Weight Tracker</h4>
-                            <p class="text-black-50 mb-0">Our weight tracking app will make it easier than ever before to monitor your progress at the gym!</p>
+                            <h4>Upload a .xlsx file</h4>
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <button type="submit" class="btn btn-success">Download Crochet Pattern</button>
+                            </form>  
                         </div>
                     </div>
                 </div>

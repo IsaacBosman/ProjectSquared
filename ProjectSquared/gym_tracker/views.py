@@ -9,3 +9,6 @@ from .forms import SpSheetForm
 
 def index(request):
     return render(request, 'index.html')
+
+def weights_page(request):
+    return render(request, 'weights_table.html')
