@@ -71,11 +71,11 @@
                     <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static 'assets/img/bg-masthead.jpg' %}" alt="..." /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
-                            <h4>Upload a .xlsx file</h4>
+                            <h4>Upload spreadsheet</h4>
                             <form action="" method="post" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 {{ form|crispy }}
-                                <button type="submit" class="btn btn-success">Download Crochet Pattern</button>
+                                <button type="submit" class="btn btn-success">Upload .xlsx file</button>
                             </form>  
                         </div>
                     </div>
