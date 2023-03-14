@@ -20,4 +20,19 @@ def get_exercises(dataframe):
 
     return exercises
 
-print(get_exercises(dataframe1))
+def get_exercise_rows(dataframe, exercises):
+    #Create a mask: 0 if value in Exercise column is not in exercises, 1 otherwise
+    mask = dataframe.Exercise.isin(exercises)
+    dataframe.drop(dataframe[~mask].index, inplace=True)
+    return dataframe
+
+def clean_exercise_rows(dataframe):
+    cln_df = dataframe.dropna(subset=['Wt.'])
+    return cln_df
+
+exercises = get_exercises(dataframe1)
+
+
+
+exercise_df = get_exercise_rows(dataframe1, exercises)
+print(clean_exercise_rows(exercise_df))
